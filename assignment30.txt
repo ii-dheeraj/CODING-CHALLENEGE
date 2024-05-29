@@ -1,0 +1,123 @@
+ANSWER1...1. Reverse String.
+let input = "Hello, World!";
+
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+
+
+setTimeout(function() {
+    let reversedString = reverseString(input);
+    console.log(reversedString);
+}, 2000);  // 2000 milliseconds = 2 seconds
+
+ANSWER2..2. Random Number Generator with Delay and Progress Indication:
+
+let delayInSeconds = 3;
+function generateRandomNumber() {
+    return Math.floor(Math.random() * 100); // Generates a random number between 0 and 99
+}
+function startCountdownAndGenerateNumber(delay) {
+    let remainingTime = delay;
+    let countdownInterval = setInterval(function() {
+        if (remainingTime > 0) {
+            console.log(`Time remaining: ${remainingTime} seconds`);
+            remainingTime--;
+        } else {
+            clearInterval(countdownInterval);
+            
+            // Generate the random number after the delay
+            let randomNumber = generateRandomNumber();
+            console.log(`Generated random number: ${randomNumber}`);
+        }
+    }, 1000); // Update every second (1000 milliseconds)
+}
+startCountdownAndGenerateNumber(delayInSeconds);
+
+
+ANSWER3..3. Build a feature for Store's Inventory.
+const storeInventory = {
+    "Apple": 1.2,
+    "Banana": 0.5,
+    "Orange": 0.8,
+    "Milk": 3.5,
+    "Bread": 2.0
+};
+const exchangeRate = 80;
+const convertedInventory = Object.fromEntries(
+    Object.entries(storeInventory).map(([item, priceInUSD]) => {
+        const priceInINR = priceInUSD * exchangeRate;
+        return [item, priceInINR];
+    })
+);
+console.log(convertedInventory);
+
+ANSWER4.. Filtering and Capitalizing: Books Published After 2010 with Author Names.
+const books = [
+    { title: "The Road", author: "Cormac McCarthy", year: 2006 },
+    { title: "The Help", author: "Kathryn Stockett", year: 2009 },
+    { title: "The Girl on the Train", author: "Paula Hawkins", year: 2015 },
+    { title: "The Goldfinch", author: "Donna Tartt", year: 2013 },
+    { title: "Gone Girl", author: "Gillian Flynn", year: 2012 }
+];
+
+const filteredBooks = books.filter(book => book.year >= 2010);
+const capitalize = str => str.split(' ')
+                             .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                             .join(' ');
+
+const updatedBooks = filteredBooks.map(book => ({
+    ...book,
+    author: capitalize(book.author)
+}));
+console.log(updatedBooks);
+
+ANSWER5.... URL validation.
+
+const urlPattern = /^(https?:\/\/)[\w\-~]+(\.[\w\-~]+)+$/i;
+
+function validateURL(url) {
+    if (urlPattern.test(url)) {
+        console.log(`The URL "${url}" is valid.`);
+    } else {
+        console.log(`The URL "${url}" is not valid.`);
+    }
+}
+
+const testURLs = [
+    "http://example.com",
+    "https://example.com",
+    "http://sub.example.com",
+    "https://example",
+    "ftp://example.com",
+    "https://example.c",
+    "https://example_com"
+];
+
+testURLs.forEach(url => validateURL(url));
+
+ANSWER6...URL
+// Step 1: Define the regex pattern for validating LinkedIn profile URLs
+const linkedinURLPattern = /^https:\/\/www\.linkedin\.com\/in\/[a-zA-Z0-9_-]{5,30}[a-zA-Z0-9]$/;
+
+// Step 2: Function to validate LinkedIn profile URL
+function validateLinkedinURL(url) {
+    if (linkedinURLPattern.test(url)) {
+        console.log(`The LinkedIn profile URL "${url}" is valid.`);
+    } else {
+        console.log(`The LinkedIn profile URL "${url}" is not valid.`);
+    }
+}
+
+// Step 3: Test the function with different LinkedIn profile URLs
+const testURLs = [
+    "https://www.linkedin.com/in/johndoe123",
+    "https://www.linkedin.com/in/jane-smith",
+    "https://www.linkedin.com/in/user_name_12345",
+    "https://www.linkedin.com/in/username-",
+    "https://www.linkedin.com/in/short",
+    "https://www.linkedin.com/in/thisisaverylongprofileidwithmorethan30characters"
+];
+
+testURLs.forEach(url => validateLinkedinURL(url));
+
